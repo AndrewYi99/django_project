@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <title>修改信息页</title>
+</head>
+<body>
+<div class="container">
+<center><h1>信息展示页面</h1></center>
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">账号</th>
+                    <th scope="col">密码</th>
+                    <th scope="col" width="100px">操作1</th>
+                    <th scope="col" width="100px">操作2</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in data %}
+                    <tr>
+                        <td class="col-4">{{ user.username }}</td>
+                        <td class="col-4">{{ user.password }}</td>
+                        <td class="col-2">
+                            <button type="button" class="btn btn-success col-2" onclick="change({{ user.userId }})">修改
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger col-2" onclick="delUser({{ user.userId }})">删除
+                            </button>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center col-6">
+            <button type="button" class="btn btn-danger" id="exit">返回登录页</button>
+            <button type="button" class="btn btn-warning" id="add">新增用户</button>
+        </div>
+    </div>
+</div>
+<!-- popper.js 本地引入有问题，故用cdn方式引入 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="/static/js/jquery-3.5.0.min.js"></script>
+</body>
+<script>
+    //点击事件一定要绑定在文档加载事件里面
+    $(function () {
+        //$("#add")拿到当前元素的jQuery对象
+        $("#add").click(function () {
+            //去访问后台，并跳转到增加页面
+            window.location.href = "/addUserUI/";
+        })
+    })
+
+    function delUser(userId) {
+        //去访问后台，并跳转到修改页面
+        window.location.href = "/delUser/?userId=" + userId;
+    }
+
+    function change(userId) {
+        //去访问后台，并跳转到增加页面
+        window.location.href = "/changeUser?userId=" + userId;
+    }
+
+    $(function () {
+        //$("#add")拿到当前元素的jQuery对象
+        $("#exit").click(function () {
+            //去访问后台，并跳转到增加页面
+            window.location.href = "/login/";
+        })
+    })
+
+
+</script>
+</html>

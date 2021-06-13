@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/login_style.css">
+  <title>Login2</title>
+</head>
+<body>
+  <div class="container">
+    <div class="login-wrapper">
+      <div class="header" style="font-size: 15px;line-height: 100px">个人信息管理系统</div>
+      <form action="/checkLogin/" method="POST">
+        <div class="form-wrapper">
+          <input type="text" name="username" placeholder="username" class="input-item">
+          <input type="password" name="password" placeholder="password" class="input-item">
+          <button  type="submit" class="btn">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
